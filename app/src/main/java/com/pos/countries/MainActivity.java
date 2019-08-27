@@ -1,5 +1,6 @@
 package com.pos.countries;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 callWebServiceCountry("Americas");
                 break;
             case R.id.menu_favorites:
-                //listAllFavoritesClinics();
+                listAllFavoritesCountries();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -81,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
         URL url = NetworkUtil.buildUrl(continente);
         CountrieAsyncTask task = new CountrieAsyncTask();
         task.execute(url);
+    }
+
+    public void listAllFavoritesCountries(){
+        GetAllFavoritesAsyncTask task = new GetAllFavoritesAsyncTask(this);
+        task.execute();
     }
     public ListView listarCountries(final List<Country> a){
 
@@ -99,6 +105,33 @@ public class MainActivity extends AppCompatActivity {
         return listCrountries;
     }
 
+
+
+    class GetAllFavoritesAsyncTask extends AsyncTask<Void, Void, List<Country>>{
+        Context context;
+
+        GetAllFavoritesAsyncTask(Context context){
+            this.context = context;
+        }
+
+        @Override
+        protected List<Country> doInBackground(Void... voids) {
+            return CountryDataBase.getInstance(context).getDao().getAllCountry();
+        }
+
+        @Override
+        protected void onPostExecute(List<Country> countries) {
+            if (countries.size() == 0) {
+                //clearList();
+                //txTextoExibido.setText(R.string.without_favorite);
+            } else {
+                txTextoExibido.setText(null);
+                listarCountries(countries);
+            }
+
+            super.onPostExecute(countries);
+        }
+    }
 
     class CountrieAsyncTask extends AsyncTask<URL, Void, List<Country>> {
 

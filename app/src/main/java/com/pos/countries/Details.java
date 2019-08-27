@@ -56,7 +56,7 @@ public class Details extends AppCompatActivity {
                 if (value == 0){
                     value = 1;
                     favoriteButton.setImageResource(ic_action_favorite_on);
-                    //new setFavorite(context).execute();
+                    new setFavorite(context).execute();
 
                     Toast.makeText(Details.this, "Favoritado!", Toast.LENGTH_SHORT).show();
                 }else {
@@ -71,7 +71,7 @@ public class Details extends AppCompatActivity {
     }
 
 
-    /*class setFavorite extends AsyncTask<Void, Void, Void> {
+    class setFavorite extends AsyncTask<Void, Void, Void> {
 
         setFavorite(Context context){
             context = context;
@@ -79,20 +79,21 @@ public class Details extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            country.setNome_fantasia(country.getNome_fantasia());
-            clinica.setDescricao(clinica.getDescricao());
-            clinica.setFoto(linkPhoto);
+            country.setName(country.getName());
+            country.setCapital(country.getCapital());
+            country.setRegion(country.getRegion());
+            country.setPopulation(country.getPopulation());
 
-            ClinicaDataBase.getInstance(context).getDao().insert(clinica);
+            CountryDataBase.getInstance(context).getDao().insert(country);
             Log.d(TAG, "inseriu (teoricamente)");
 
-            List<Clinica> clinicas = ClinicaDataBase.getInstance(context).getDao().getAllclinica();
+            List<Country> countries = CountryDataBase.getInstance(context).getDao().getAllCountry();
 
             Log.d(TAG, "Mostrar Lista");
-            for(Clinica c : clinicas){
+            for(Country c : countries){
                 Log.d(TAG, "-->" + c.toString());
             }
             return null;
         }
-    }*/
+    }
 }

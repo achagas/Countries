@@ -1,5 +1,7 @@
 package com.pos.countries.Model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -7,28 +9,33 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class Country implements Parcelable {
+
+
+    @PrimaryKey(autoGenerate = true)
+    private int Id;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("topLevelDomain")
-    @Expose
-    private List<String> topLevelDomain = null;
+    //@SerializedName("topLevelDomain")
+    //@Expose
+    //private List<String> topLevelDomain = null;
     @SerializedName("alpha2Code")
     @Expose
     private String alpha2Code;
     @SerializedName("alpha3Code")
     @Expose
     private String alpha3Code;
-    @SerializedName("callingCodes")
-    @Expose
-    private List<String> callingCodes = null;
+   // @SerializedName("callingCodes")
+   // @Expose
+   // private List<String> callingCodes = null;
     @SerializedName("capital")
     @Expose
     private String capital;
-    @SerializedName("altSpellings")
-    @Expose
-    private List<String> altSpellings = null;
+    //@SerializedName("altSpellings")
+    //@Expose
+    //private List<String> altSpellings = null;
     @SerializedName("region")
     @Expose
     private String region;
@@ -38,9 +45,9 @@ public class Country implements Parcelable {
     @SerializedName("population")
     @Expose
     private Integer population;
-    @SerializedName("latlng")
-    @Expose
-    private List<Double> latlng = null;
+    //@SerializedName("latlng")
+    //@Expose
+    //private List<Double> latlng = null;
     @SerializedName("demonym")
     @Expose
     private String demonym;
@@ -50,36 +57,45 @@ public class Country implements Parcelable {
     @SerializedName("gini")
     @Expose
     private Double gini;
-    @SerializedName("timezones")
-    @Expose
-    private List<String> timezones = null;
-    @SerializedName("borders")
-    @Expose
-    private List<String> borders = null;
+    //@SerializedName("timezones")
+    //@Expose
+    //private List<String> timezones = null;
+    //@SerializedName("borders")
+    //@Expose
+    //private List<String> borders = null;
     @SerializedName("nativeName")
     @Expose
     private String nativeName;
     @SerializedName("numericCode")
     @Expose
     private String numericCode;
-    @SerializedName("currencies")
-    @Expose
-    private List<Currency> currencies = null;
-    @SerializedName("languages")
-    @Expose
-    private List<Language> languages = null;
-    @SerializedName("translations")
-    @Expose
-    private Translations translations;
+    //@SerializedName("currencies")
+    //@Expose
+    //private List<Currency> currencies = null;
+    //@SerializedName("languages")
+    //@Expose
+    //private List<Language> languages = null;
+    //@SerializedName("translations")
+    //@Expose
+    //private Translations translations;
     @SerializedName("flag")
     @Expose
     private String flag;
-    @SerializedName("regionalBlocs")
-    @Expose
-    private List<RegionalBloc> regionalBlocs = null;
+    //@SerializedName("regionalBlocs")
+    //@Expose
+    //private List<RegionalBloc> regionalBlocs = null;
     @SerializedName("cioc")
     @Expose
     private String cioc;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
 
     public Country(){
 
@@ -87,12 +103,12 @@ public class Country implements Parcelable {
 
     protected Country(Parcel in) {
         name = in.readString();
-        topLevelDomain = in.createStringArrayList();
+        //topLevelDomain = in.createStringArrayList();
         alpha2Code = in.readString();
         alpha3Code = in.readString();
-        callingCodes = in.createStringArrayList();
+        //callingCodes = in.createStringArrayList();
         capital = in.readString();
-        altSpellings = in.createStringArrayList();
+        //altSpellings = in.createStringArrayList();
         region = in.readString();
         subregion = in.readString();
         if (in.readByte() == 0) {
@@ -111,8 +127,8 @@ public class Country implements Parcelable {
         } else {
             gini = in.readDouble();
         }
-        timezones = in.createStringArrayList();
-        borders = in.createStringArrayList();
+        //timezones = in.createStringArrayList();
+        //borders = in.createStringArrayList();
         nativeName = in.readString();
         numericCode = in.readString();
         flag = in.readString();
@@ -139,13 +155,13 @@ public class Country implements Parcelable {
         this.name = name;
     }
 
-    public List<String> getTopLevelDomain() {
+   /* public List<String> getTopLevelDomain() {
         return topLevelDomain;
     }
 
     public void setTopLevelDomain(List<String> topLevelDomain) {
         this.topLevelDomain = topLevelDomain;
-    }
+    }*/
 
     public String getAlpha2Code() {
         return alpha2Code;
@@ -163,13 +179,13 @@ public class Country implements Parcelable {
         this.alpha3Code = alpha3Code;
     }
 
-    public List<String> getCallingCodes() {
+    /*public List<String> getCallingCodes() {
         return callingCodes;
     }
 
     public void setCallingCodes(List<String> callingCodes) {
         this.callingCodes = callingCodes;
-    }
+    }*/
 
     public String getCapital() {
         return capital;
@@ -179,13 +195,13 @@ public class Country implements Parcelable {
         this.capital = capital;
     }
 
-    public List<String> getAltSpellings() {
+    /*public List<String> getAltSpellings() {
         return altSpellings;
     }
 
     public void setAltSpellings(List<String> altSpellings) {
         this.altSpellings = altSpellings;
-    }
+    }*/
 
     public String getRegion() {
         return region;
@@ -211,13 +227,13 @@ public class Country implements Parcelable {
         this.population = population;
     }
 
-    public List<Double> getLatlng() {
+   /* public List<Double> getLatlng() {
         return latlng;
     }
 
     public void setLatlng(List<Double> latlng) {
         this.latlng = latlng;
-    }
+    }*/
 
     public String getDemonym() {
         return demonym;
@@ -243,21 +259,21 @@ public class Country implements Parcelable {
         this.gini = gini;
     }
 
-    public List<String> getTimezones() {
+    /*public List<String> getTimezones() {
         return timezones;
     }
 
     public void setTimezones(List<String> timezones) {
         this.timezones = timezones;
-    }
+    }*/
 
-    public List<String> getBorders() {
+    /*public List<String> getBorders() {
         return borders;
     }
 
     public void setBorders(List<String> borders) {
         this.borders = borders;
-    }
+    }*/
 
     public String getNativeName() {
         return nativeName;
@@ -275,29 +291,29 @@ public class Country implements Parcelable {
         this.numericCode = numericCode;
     }
 
-    public List<Currency> getCurrencies() {
+   /* public List<Currency> getCurrencies() {
         return currencies;
     }
 
     public void setCurrencies(List<Currency> currencies) {
         this.currencies = currencies;
-    }
+    }*/
 
-    public List<Language> getLanguages() {
+   /* public List<Language> getLanguages() {
         return languages;
     }
 
     public void setLanguages(List<Language> languages) {
         this.languages = languages;
-    }
+    }*/
 
-    public Translations getTranslations() {
+   /* public Translations getTranslations() {
         return translations;
     }
 
     public void setTranslations(Translations translations) {
         this.translations = translations;
-    }
+    }*/
 
     public String getFlag() {
         return flag;
@@ -307,13 +323,13 @@ public class Country implements Parcelable {
         this.flag = flag;
     }
 
-    public List<RegionalBloc> getRegionalBlocs() {
+    /*public List<RegionalBloc> getRegionalBlocs() {
         return regionalBlocs;
     }
 
     public void setRegionalBlocs(List<RegionalBloc> regionalBlocs) {
         this.regionalBlocs = regionalBlocs;
-    }
+    }*/
 
     public String getCioc() {
         return cioc;
@@ -331,12 +347,12 @@ public class Country implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeStringList(topLevelDomain);
+        //dest.writeStringList(topLevelDomain);
         dest.writeString(alpha2Code);
         dest.writeString(alpha3Code);
-        dest.writeStringList(callingCodes);
+        //dest.writeStringList(callingCodes);
         dest.writeString(capital);
-        dest.writeStringList(altSpellings);
+        //dest.writeStringList(altSpellings);
         dest.writeString(region);
         dest.writeString(subregion);
         if (population == null) {
@@ -358,8 +374,8 @@ public class Country implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeDouble(gini);
         }
-        dest.writeStringList(timezones);
-        dest.writeStringList(borders);
+        //dest.writeStringList(timezones);
+        //dest.writeStringList(borders);
         dest.writeString(nativeName);
         dest.writeString(numericCode);
         dest.writeString(flag);
