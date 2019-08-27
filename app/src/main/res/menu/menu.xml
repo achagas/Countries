@@ -8,7 +8,28 @@
         />
 
     <item
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
+        android:id="@+id/africa"
+        android:title="@string/africa_op" />
+    <item
+        app:showAsAction="never"
+        android:id="@+id/americas"
+        android:title="@string/america_op" />
+    <item
+        app:showAsAction="never"
+        android:id="@+id/asia"
+        android:title="@string/asia_op" />
+    <item
+        app:showAsAction="never"
+        android:id="@+id/europe"
+        android:title="@string/europe_op" />
+    <item
+        app:showAsAction="never"
+        android:id="@+id/oceania"
+        android:title="@string/oceania_op" />
+
+    <item
+        app:showAsAction="never"
         android:id="@+id/menu_favorites"
         android:title="@string/menu_paises_favoritos" />
 </menu>

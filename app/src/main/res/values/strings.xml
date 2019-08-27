@@ -3,4 +3,9 @@
     <string name="menu_paises_favoritos">Países Favoritos</string>
     <string name="countries">Países</string>
     <string name="tv_name_country_list">country_list</string>
+    <string name="oceania_op">Oceania</string>
+    <string name="europe_op">Europa</string>
+    <string name="asia_op">Asia</string>
+    <string name="america_op">Americas</string>
+    <string name="africa_op">Africa</string>
 </resources>

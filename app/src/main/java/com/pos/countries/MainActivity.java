@@ -48,7 +48,21 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_paises:
                 callWebServiceCountry();
                 break;
-
+            case R.id.asia:
+                callWebServiceCountry("Asia");
+                break;
+            case R.id.africa:
+                callWebServiceCountry("Africa");
+                break;
+            case R.id.oceania:
+                callWebServiceCountry("Oceania");
+                break;
+            case R.id.europe:
+                callWebServiceCountry("Europe");
+                break;
+            case R.id.americas:
+                callWebServiceCountry("Americas");
+                break;
             case R.id.menu_favorites:
                 //listAllFavoritesClinics();
                 break;
@@ -59,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
     public void callWebServiceCountry(){
         Log.d(TAG, "method call web service");
         URL url = NetworkUtil.buildUrl("stf");
+        CountrieAsyncTask task = new CountrieAsyncTask();
+        task.execute(url);
+    }
+    public void callWebServiceCountry(String continente){
+        Log.d(TAG, "method call web service");
+        URL url = NetworkUtil.buildUrl(continente);
         CountrieAsyncTask task = new CountrieAsyncTask();
         task.execute(url);
     }

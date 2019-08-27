@@ -11,15 +11,14 @@ import java.util.Scanner;
 
 public class NetworkUtil {
 
-    final static String COUNTRIE_URL= "https://restcountries.eu/rest/v2/all";
+    final static String COUNTRIE_URL_ALL= "https://restcountries.eu/rest/v2/all";
+    final static String COUNTRIE_URL = "https://restcountries.eu/rest/v2/region/";
     final static String PARAM_QUERY = "q";
     final static String PARAM_SORT = "sort";
     final static String sortBy = "stars";
 
-    public static URL buildUrl(String githubSearchQuery){
-        Uri buildUri = Uri.parse(COUNTRIE_URL).buildUpon()
-                .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
-                .appendQueryParameter(PARAM_SORT, sortBy).build();
+    public static URL buildUrl(String continente){
+        Uri.Builder buildUri = Uri.parse(COUNTRIE_URL + continente).buildUpon();
 
         URL url = null;
         try{
