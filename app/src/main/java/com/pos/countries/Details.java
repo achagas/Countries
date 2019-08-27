@@ -2,12 +2,22 @@ package com.pos.countries;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pos.countries.Model.Country;
+
+import java.util.List;
+
+import static com.pos.countries.R.drawable.ic_action_favorite_on;
+import static com.pos.countries.R.drawable.ic_action_favorite_off;
 
 public class Details extends AppCompatActivity {
     Country country;
@@ -23,10 +33,66 @@ public class Details extends AppCompatActivity {
         Intent intent = getIntent();
         country = intent.getParcelableExtra("country");
 
+        TextView tv_pais = findViewById(R.id.tv_details_pais);
         TextView tv_capital = findViewById(R.id.tv_details_capital);
         TextView tv_region = findViewById(R.id.tv_details_region);
+        TextView tv_population = findViewById(R.id.tv_details_population);
+        TextView tv_latitude = findViewById(R.id.tv_details_latitude);
+        //TextView tv_longitude = findViewById(R.id.tv_details_longitude);
+        TextView tv_currency = findViewById(R.id.tv_details_currency);
 
+
+        tv_pais.setText(country.getName());
         tv_capital.setText(country.getCapital());
         tv_region.setText(country.getRegion());
+        tv_population.setText(country.getPopulation().toString());
+        //tv_latitude.setText(country.getLatlng().get(position));
+        //tv_currency.setText(country.getCurrencies().toString());
+
+        final FloatingActionButton favoriteButton = findViewById(R.id.favButton);
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (value == 0){
+                    value = 1;
+                    favoriteButton.setImageResource(ic_action_favorite_on);
+                    //new setFavorite(context).execute();
+
+                    Toast.makeText(Details.this, "Favoritado!", Toast.LENGTH_SHORT).show();
+                }else {
+                    value = 0;
+                    favoriteButton.setImageResource(ic_action_favorite_off);
+                    Toast.makeText(Details.this, "Desfavoritado!", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
     }
+
+
+    /*class setFavorite extends AsyncTask<Void, Void, Void> {
+
+        setFavorite(Context context){
+            context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            country.setNome_fantasia(country.getNome_fantasia());
+            clinica.setDescricao(clinica.getDescricao());
+            clinica.setFoto(linkPhoto);
+
+            ClinicaDataBase.getInstance(context).getDao().insert(clinica);
+            Log.d(TAG, "inseriu (teoricamente)");
+
+            List<Clinica> clinicas = ClinicaDataBase.getInstance(context).getDao().getAllclinica();
+
+            Log.d(TAG, "Mostrar Lista");
+            for(Clinica c : clinicas){
+                Log.d(TAG, "-->" + c.toString());
+            }
+            return null;
+        }
+    }*/
 }

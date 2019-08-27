@@ -39,4 +39,10 @@ public class Currency {
         this.symbol = symbol;
     }
 
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
